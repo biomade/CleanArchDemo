@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CleanArch.Application.Interfaces;
+using CleanArch.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,6 +14,14 @@ namespace CleanArch.Api.Controllers
     [ApiController]
     public class CourseController : ControllerBase
     {
+        private readonly ICourseService _courseService;
+
+        public CourseController(ICourseService courseService)
+        {
+            _courseService = courseService;
+        }
+
+
         //// GET: api/<CourseController>
         //[HttpGet]
         //public IEnumerable<string> Get()
@@ -26,11 +36,13 @@ namespace CleanArch.Api.Controllers
         //    return "value";
         //}
 
-        //// POST api/<CourseController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<CourseController>
+        [HttpPost]
+        public IActionResult Post([FromBody] CourseViewModel courseViewModel)
+        {
+            _courseService.Create(courseViewModel);
+            return Ok(courseViewModel);
+        }
 
         //// PUT api/<CourseController>/5
         //[HttpPut("{id}")]

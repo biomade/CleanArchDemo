@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CleanArch.Infra.Data.Context;
 using CleanArch.Infra.IoC;
+using MediatR;
 
 namespace CleanArch.MVC
 {
@@ -43,6 +44,7 @@ namespace CleanArch.MVC
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            services.AddMediatR(typeof(Startup));
             //now call our register services method we created below
             RegisterServices(services);
         }
