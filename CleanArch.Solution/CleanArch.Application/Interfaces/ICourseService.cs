@@ -8,7 +8,7 @@ namespace CleanArch.Application.Interfaces
     public interface ICourseService
     {
         //this VM returns an IEnumerable
-        CourseViewModel GetCourses();
+        IEnumerable<CourseViewModel> GetCourses();
         void Create(CourseViewModel courseViewModel);
     }
 }
