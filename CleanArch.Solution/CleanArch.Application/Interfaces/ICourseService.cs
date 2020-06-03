@@ -9,5 +9,6 @@ namespace CleanArch.Application.Interfaces
     {
         //this VM returns an IEnumerable
         CourseViewModel GetCourses();
+        void Create(CourseViewModel courseViewModel);
     }
 }
