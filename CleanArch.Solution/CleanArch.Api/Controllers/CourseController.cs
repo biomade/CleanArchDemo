@@ -22,12 +22,13 @@ namespace CleanArch.Api.Controllers
         }
 
 
-        //// GET: api/<CourseController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+        // GET: api/<CourseController>
+        [HttpGet]
+        public IActionResult Get()
+        {
+            IEnumerable<CourseViewModel> courseViewModel = _courseService.GetCourses();
+            return Ok(courseViewModel);
+        }
 
         //// GET api/<CourseController>/5
         //[HttpGet("{id}")]
